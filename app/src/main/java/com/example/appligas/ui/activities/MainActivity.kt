@@ -8,6 +8,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import com.example.appligas.R
 import com.example.appligas.databinding.ActivityMainBinding
 
@@ -22,12 +23,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        setSupportActionBar(binding.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
 
     }
 
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //ESTE ES EL METODO QUE HACE QUE SALGA LA FLECHA PARA IR A LA PANTALLA ANTERIOR EN LA BARRA DE MENU.
+    // TODO //ESTE ES EL METODO QUE HACE QUE SALGA LA FLECHA PARA IR A LA PANTALLA ANTERIOR EN LA BARRA DE MENU.
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)

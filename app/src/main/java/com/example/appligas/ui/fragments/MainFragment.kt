@@ -9,12 +9,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.appligas.R
 import com.example.appligas.databinding.FragmentLoginBinding
+import com.example.appligas.databinding.FragmentMainBinding
 import com.google.android.material.snackbar.Snackbar
 
-class LoginFragment : Fragment(), OnClickListener {
+class MainFragment : Fragment(), OnClickListener {
 
 
-    private lateinit var binding: FragmentLoginBinding
+    private lateinit var binding: FragmentMainBinding
 
 
     //Metodo que ACOPLA los elementos de la pantalla con el Fragment.
@@ -30,18 +31,14 @@ class LoginFragment : Fragment(), OnClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
 
     }
 
-    /*Aqui ya tenemos la vista creada y pegada al fragment.
-    dentro de este metodo ponemos a escuchar a los botones.
-    */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnEntrar.setOnClickListener(this)
-        binding.btnRegistro.setOnClickListener(this)
+
     }
 
 
@@ -53,27 +50,6 @@ class LoginFragment : Fragment(), OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
 
-            binding.btnEntrar.id -> {
-                //Comprobamos que hay datos.
-                if (binding.editUser.text.isNotEmpty()
-                    && binding.editPassword.text.isNotEmpty()
-                ) {
-
-                    //Navegamos a otro fragment con la lista de ligas.
-                    Snackbar.make(
-                        binding.root,
-                        resources.getString(R.string.datosOk),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
-
-                } else {
-                    Snackbar.make(
-                        binding.root,
-                        resources.getString(R.string.rellenarDatos),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
-                }
-            }
 
         }
     }
