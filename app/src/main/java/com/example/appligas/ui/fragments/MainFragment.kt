@@ -14,7 +14,7 @@ import com.example.appligas.adapter.LigaAdapter
 import com.example.appligas.databinding.FragmentMainBinding
 import com.example.appligas.model.Liga
 
-class MainFragment : Fragment(), OnClickListener {
+class MainFragment : Fragment() {
 
 
     private lateinit var binding: FragmentMainBinding
@@ -57,7 +57,7 @@ class MainFragment : Fragment(), OnClickListener {
         ligaAdapter = LigaAdapter(listaLigas, requireContext())
         binding.recyclerLigas.adapter = ligaAdapter
         binding.recyclerLigas.layoutManager = LinearLayoutManager(requireContext())
-        binding.btnback.setOnClickListener(this)
+
     }
 
 
@@ -65,12 +65,7 @@ class MainFragment : Fragment(), OnClickListener {
     override fun onDetach() {
         super.onDetach()    }
 
-    override fun onClick(v: View?) {
-        when (v?.id) {
 
-
-            }
-        }
     }
 
 
