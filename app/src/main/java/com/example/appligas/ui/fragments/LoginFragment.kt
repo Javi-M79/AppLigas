@@ -1,12 +1,14 @@
 package com.example.appligas.ui.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.appligas.R
 import com.example.appligas.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
@@ -58,13 +60,13 @@ class LoginFragment : Fragment(), OnClickListener {
                 if (binding.editUser.text.isNotEmpty()
                     && binding.editPassword.text.isNotEmpty()
                 ) {
-
                     //Navegamos a otro fragment con la lista de ligas.
-                    Snackbar.make(
-                        binding.root,
-                        resources.getString(R.string.datosOk),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+//                    Snackbar.make(
+//                        binding.root,
+//                        resources.getString(R.string.datosOk),
+//                        Snackbar.LENGTH_SHORT
+//                    ).show()
+                    findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
 
                 } else {
                     Snackbar.make(
@@ -72,7 +74,14 @@ class LoginFragment : Fragment(), OnClickListener {
                         resources.getString(R.string.rellenarDatos),
                         Snackbar.LENGTH_SHORT
                     ).show()
+
                 }
+            }
+
+            binding.btnRegistro.id->{
+
+                //Prueba de funcionamineto de pulsacion.
+                Snackbar.make(binding.root,"Boton registro pulsado", Snackbar.LENGTH_SHORT).show()
             }
 
         }

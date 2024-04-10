@@ -7,20 +7,21 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.appligas.R
-import com.example.appligas.databinding.FragmentLoginBinding
 import com.example.appligas.databinding.FragmentMainBinding
-import com.google.android.material.snackbar.Snackbar
 
 class MainFragment : Fragment(), OnClickListener {
 
 
     private lateinit var binding: FragmentMainBinding
 
-
     //Metodo que ACOPLA los elementos de la pantalla con el Fragment.
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
+        //Si pongo a escuchar este biton, la aplicacion no pasa de fragment y se cierra.???
+//        binding.btnback.setOnClickListener(this)
 
     }
 
@@ -50,7 +51,10 @@ class MainFragment : Fragment(), OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
 
-
+            //No funciona este metodo.??
+            binding.btnback.id -> {
+                findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
+            }
         }
     }
 
