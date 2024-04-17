@@ -8,16 +8,16 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.appligas.ui.fragments.LoginFragment"
-        android:label="fragment_login"
+        android:label="Inicio de sesion"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_loginFragment_to_LigaFragment"
+            app:destination="@id/ligaFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.example.appligas.ui.fragments.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        android:id="@+id/ligaFragment"
+        android:name="com.example.appligas.ui.fragments.LigaFragment"
+        android:label="Ligas disponibles"
+        tools:layout="@layout/fragment_liga" />
 </navigation>

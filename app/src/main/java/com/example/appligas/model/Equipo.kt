@@ -1,6 +1,9 @@
 package com.example.appligas.model
 
-class Equipo (val nombre: String, val escudo: String ){
+import java.io.Serializable
+
+
+data class Equipo (val nombre: String, val escudo: String ): Serializable{
 
 
 

@@ -42,6 +42,11 @@ class LoginFragment : Fragment(), OnClickListener {
     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Ocultar actionBar
+
+        requireActivity().actionBar?.setDisplayShowTitleEnabled(false)
+
+
         binding.btnEntrar.setOnClickListener(this)
         binding.btnRegistro.setOnClickListener(this)
     }
@@ -66,7 +71,7 @@ class LoginFragment : Fragment(), OnClickListener {
 //                        resources.getString(R.string.datosOk),
 //                        Snackbar.LENGTH_SHORT
 //                    ).show()
-                    findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+                    findNavController().navigate(R.id.action_loginFragment_to_LigaFragment)
 
                 } else {
                     Snackbar.make(

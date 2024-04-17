@@ -24,7 +24,7 @@ class LigaAdapter(val listaLigas: ArrayList<Liga>, val context: Context) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val vista: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.template_liga, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_liga, parent, false)
         return MyHolder(vista)
     }
 
