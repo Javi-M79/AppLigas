@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.android.volley.RequestQueue
 import com.example.appligas.adapter.EquipoAdapter
+import com.example.appligas.adapter.LigaAdapter
 import com.example.appligas.databinding.FragmentEquipoBinding
 import com.example.appligas.model.Equipo
 
@@ -40,6 +41,8 @@ class EquipoFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
     }
+
+
 }
 
 
