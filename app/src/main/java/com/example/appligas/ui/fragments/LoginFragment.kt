@@ -86,7 +86,8 @@ class LoginFragment : Fragment(), OnClickListener {
             binding.btnRegistro.id->{
 
                 //Prueba de funcionamineto de pulsacion.
-                Snackbar.make(binding.root,"Boton registro pulsado", Snackbar.LENGTH_SHORT).show()
+               /* Snackbar.make(binding.root,"Boton registro pulsado", Snackbar.LENGTH_SHORT).show()*/
+                findNavController().navigate(R.id.action_loginFragment_to_registroFragment)
             }
 
         }

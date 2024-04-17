@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/pantallaregistro"
+    android:id="@+id/fragment_registro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgrounddapp"
@@ -22,7 +22,7 @@
             android:id="@+id/imgLogin"
             android:layout_width="170dp"
             android:layout_height="170dp"
-            android:src="@drawable/registrousuario"
+            android:src="@drawable/login"
             app:cardCornerRadius="5dp" />
 
 

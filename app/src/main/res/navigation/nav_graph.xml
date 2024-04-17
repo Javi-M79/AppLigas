@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_LigaFragment"
             app:destination="@id/ligaFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registroFragment"
+            app:destination="@id/registroFragment" />
     </fragment>
 
     <fragment
@@ -20,4 +23,8 @@
         android:name="com.example.appligas.ui.fragments.LigaFragment"
         android:label="Ligas disponibles"
         tools:layout="@layout/fragment_liga" />
+    <fragment
+        android:id="@+id/registroFragment"
+        android:name="com.example.appligas.ui.fragments.RegistroFragment"
+        android:label="Introduzca sus datos" />
 </navigation>
