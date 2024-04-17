@@ -19,7 +19,7 @@ import com.example.appligas.model.Liga
 import org.json.JSONArray
 import org.json.JSONObject
 
-class LigaFragment : Fragment() {
+class LigaFragment : Fragment(), LigaAdapter.onLigaListener {
 
     private lateinit var binding: FragmentLigaBinding
     private lateinit var ligaAdapter: LigaAdapter
@@ -52,7 +52,7 @@ class LigaFragment : Fragment() {
         ligaAdapter = LigaAdapter(listaLigas, requireContext())
         binding.recyclerLigas.adapter = ligaAdapter
         binding.recyclerLigas.layoutManager = LinearLayoutManager(requireContext())
-        obtenerLigas()
+        mostrarLigas()
 
     }
 
@@ -60,14 +60,15 @@ class LigaFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
     }
-     fun obtenerLigas() {
+
+     fun mostrarLigas() {
         val url = "https://www.thesportsdb.com/api/v1/json/3/all_leagues.php"
 
         val request = JsonObjectRequest(Request.Method.GET, url, null,
             { response ->
                 val jsonArray = response.getJSONArray("leagues")
-                for (i in 0 until jsonArray.length()) {
 
+                for (i in 0 until jsonArray.length()) {
                     val jsonObject = jsonArray.getJSONObject(i)
                     val nombreLiga = jsonObject.getString("strLeague")
                     listaLigas.add(Liga(nombreLiga))
@@ -79,6 +80,10 @@ class LigaFragment : Fragment() {
                 println("Error al importar ligas.")
             })
         requestQueue.add(request)
+    }
+
+    override fun onLigaSelected(nombreLiga: String) {
+        TODO("Not yet implemented")
     }
 }
 
