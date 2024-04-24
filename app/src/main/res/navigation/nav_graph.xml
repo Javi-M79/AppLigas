@@ -24,9 +24,23 @@
         android:id="@+id/ligaFragment"
         android:name="com.example.appligas.ui.fragments.LigaFragment"
         android:label="Ligas disponibles"
-        tools:layout="@layout/fragment_liga" />
+        tools:layout="@layout/fragment_liga">
+        <action
+            android:id="@+id/action_ligaFragment_to_equipoFragment"
+            app:destination="@id/equipoFragment" />
+    </fragment>
+
+
     <fragment
         android:id="@+id/registroFragment"
         android:name="com.example.appligas.ui.fragments.RegistroFragment"
         android:label="Introduzca sus datos" />
+    <fragment
+        android:id="@+id/equipoFragment"
+        android:name="com.example.appligas.ui.fragments.EquipoFragment"
+        android:label="fragment_equipo"
+        tools:layout="@layout/fragment_equipo" />
+    <argument
+        android:name="Liga"
+        app:argType="com.example.appligas.model.Liga" />
 </navigation>
