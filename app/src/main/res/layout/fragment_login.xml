@@ -60,11 +60,11 @@
 
 
     <TextView
-        android:id="@+id/txtUser"
+        android:id="@+id/txtCorreoLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Usuario"
+        android:text="Correo electronico"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -72,42 +72,43 @@
         app:layout_constraintTop_toBottomOf="@id/guidelinehorizontal" />
 
     <EditText
-        android:id="@+id/editUser"
+        android:id="@+id/editCorreoLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Introduzca el nombre de usuario"
+        android:drawableStart="@drawable/iconomail"
+        android:hint="Introduzca su correo electronico"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtUser" />
+        app:layout_constraintTop_toBottomOf="@id/txtCorreoLogin" />
 
 
     <TextView
-        android:id="@+id/txtPassword"
+        android:id="@+id/txtPasswordLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Contraseña"
-
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editUser" />
+        app:layout_constraintTop_toBottomOf="@id/editCorreoLogin" />
 
     <EditText
-        android:id="@+id/editPassword"
+        android:id="@+id/editPasswordLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:drawableStart="@drawable/password"
         android:hint="Introduzca su contraseña"
-        android:textColorHint="@color/white"
         android:inputType="textPassword"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtPassword" />
+        app:layout_constraintTop_toBottomOf="@id/txtPasswordLogin" />
 
     <Button
         android:id="@+id/btnEntrar"
@@ -119,7 +120,7 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/guidelinevertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editPassword" />
+        app:layout_constraintTop_toBottomOf="@id/editPasswordLogin" />
 
     <Button
         android:id="@+id/btnRegistro"
@@ -131,7 +132,7 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guidelinevertical"
-        app:layout_constraintTop_toBottomOf="@id/editPassword" />
+        app:layout_constraintTop_toBottomOf="@id/editPasswordLogin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
