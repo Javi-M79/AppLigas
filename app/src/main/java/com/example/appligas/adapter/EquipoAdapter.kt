@@ -33,10 +33,8 @@ class EquipoAdapter(
         parent: ViewGroup,
         viewType: Int
     ): EquipoAdapter.MyHolderEquipo {
-
         val vista: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_equipo, parent, false)
-
         return MyHolderEquipo(vista)
     }
 

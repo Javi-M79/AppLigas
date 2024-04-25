@@ -34,11 +34,16 @@
     <fragment
         android:id="@+id/registroFragment"
         android:name="com.example.appligas.ui.fragments.RegistroFragment"
-        android:label="Introduzca sus datos" />
+        android:label="Introduzca sus datos" >
+        <action
+            android:id="@+id/action_registroFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
     <fragment
         android:id="@+id/equipoFragment"
         android:name="com.example.appligas.ui.fragments.EquipoFragment"
-        android:label="fragment_equipo"
+        android:label="Equipos"
         tools:layout="@layout/fragment_equipo" />
     <argument
         android:name="Liga"

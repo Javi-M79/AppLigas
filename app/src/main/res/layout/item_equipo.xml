@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgrounddapp"
+        android:background="@color/componentes"
         android:orientation="horizontal">
         <!--Meter la imagen en un cardView?-->
 

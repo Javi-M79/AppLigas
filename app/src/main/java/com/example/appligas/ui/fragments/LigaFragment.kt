@@ -36,7 +36,6 @@ class LigaFragment : Fragment(), LigaAdapter.onLigaListener {
 
     }
 
-    //METODO OBLIGATORIO. Retorna la vista que mostrara el fragment. Es decir su Layout. (fragment_login.xml)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,7 +50,7 @@ class LigaFragment : Fragment(), LigaAdapter.onLigaListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //CALLBACK. INICIAMOS EL OBJETO. POR CONTESTO LE PASAMOS THIS QUE CORRESPONDE AL OBJETO LISTENER DE LA INTERFACE
+        //CALLBACK. INICIAMOS EL OBJETO. POR CONTEXTO LE PASAMOS THIS QUE CORRESPONDE AL OBJETO LISTENER DE LA INTERFACE
         ligaAdapter = LigaAdapter(listaLigas, this)
         binding.recyclerLigas.adapter = ligaAdapter
         //En este caso en vez de this se usa requiredContext ya que la View ya esta inflada a traves del Binding.root.
@@ -71,7 +70,6 @@ class LigaFragment : Fragment(), LigaAdapter.onLigaListener {
 
         val request = JsonObjectRequest(Request.Method.GET, url, null,
             { response ->
-
                 val jsonArray = response.getJSONArray("leagues")
 
                 for (i in 0 until jsonArray.length()) {
@@ -86,24 +84,16 @@ class LigaFragment : Fragment(), LigaAdapter.onLigaListener {
                 }
             },
             { error ->
-                Snackbar.make(binding.root, "Error al importar las ligas.", Snackbar.LENGTH_SHORT).show()
-                println("Error al importar ligas.")
+                Snackbar.make(binding.root, "Error al importar las ligas.", Snackbar.LENGTH_SHORT)
+                    .show()
+
             })
+        Volley.newRequestQueue(requireContext()).add(request)
         requestQueue.add(request)
     }
 
     //CALLBACK. IMPLEMENTADA LA INTERFACE EN EL FRAGMENT PARA PODER HACER EL CASTEO
-
     override fun onLigaSelected(liga: Liga) {
-        //Prueba del funcionamiento de la pulsacion
-//        Snackbar.make(
-//            binding.root,
-//            "Liga pulsada con nombre ${liga.nombre}",
-//            Snackbar.LENGTH_SHORT
-//        ).show()
-
-        //Navegar al fragment Equipos -> pasar el nombre de la liga para concatenarlo a la url
-
         //PASAR DATOS ENTRE FRAGMENTS
         val bundle = Bundle()
         bundle.putSerializable("liga", liga)

@@ -12,11 +12,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.appligas.R
 import com.example.appligas.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment(), OnClickListener {
 
 
     private lateinit var binding: FragmentLoginBinding
+    private lateinit var auth: FirebaseAuth
 
 
     //Metodo que ACOPLA los elementos de la pantalla con el Fragment.
@@ -43,10 +45,7 @@ class LoginFragment : Fragment(), OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Ocultar actionBar
-
         requireActivity().actionBar?.setDisplayShowTitleEnabled(false)
-
-
         binding.btnEntrar.setOnClickListener(this)
         binding.btnRegistro.setOnClickListener(this)
     }
