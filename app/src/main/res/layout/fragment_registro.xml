@@ -7,8 +7,7 @@
     android:background="@color/backgrounddapp"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="20dp"
-    app:passwordToggleEnabled="true">
+    android:padding="20dp">
 
 
     <androidx.cardview.widget.CardView
@@ -25,7 +24,6 @@
             android:src="@drawable/login"
             app:cardCornerRadius="5dp" />
 
-
     </androidx.cardview.widget.CardView>
 
 
@@ -37,41 +35,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginTop="30dp"
-        android:inputType="textEmailAddress"
-        android:text="Nombre:"
+        android:text="Nombre de usuario:"
         android:textColor="@color/white" />
 
-
     <EditText
-        android:id="@+id/editApellidoResgistro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="10dp"
-        android:hint="Introduzca su apellido"
-        android:inputType="textEmailAddress" />
-
-
-    <!--Apellido-->
-
-    <TextView
-        android:id="@+id/txtapellidoRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginTop="10dp"
-        android:inputType="textEmailAddress"
-        android:text="Apellido:"
-        android:textColor="@color/white" />
-
-
-    <EditText
-        android:id="@+id/editNombreResgistro"
+        android:id="@+id/editnombreRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Introduzca su nombre"
-        android:inputType="textEmailAddress" />
+        android:inputType="text" />
 
 
     <!--Correo Electronico-->
@@ -81,10 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginTop="10dp"
-        android:inputType="textEmailAddress"
         android:text="Correo electronico:"
         android:textColor="@color/white" />
-
 
     <EditText
         android:id="@+id/editCorreoRegistro"
@@ -105,7 +76,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginTop="10dp"
-        android:inputType="textEmailAddress"
         android:text="Contraseña:"
         android:textColor="@color/white" />
 
@@ -118,8 +88,7 @@
         android:drawableStart="@drawable/password"
         android:drawablePadding="10dp"
         android:hint="Introduzca contraseña"
-        android:inputType="textPassword"
-        app:passwordToggleEnabled="true" />
+        android:inputType="textPassword" />
 
 
     <Button
@@ -132,21 +101,6 @@
         android:text="Resgistrar"
         android:textColor="@color/black" />
 
-
-    <!--
-
-       TODO REVISAR ANIMACION
-
-       <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottiefootballLoading"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="carga_ligas.json"
-            app:lottie_imageAssetsFolder="assets"
-            app:lottie_loop="true" />
-    -->
 
 </LinearLayout>
 
