@@ -1,7 +1,6 @@
 package com.example.appligas.ui.fragments
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.appligas.R
 import com.example.appligas.databinding.FragmentLoginBinding
+import com.example.appligas.model.Usuario
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
@@ -20,13 +20,11 @@ class LoginFragment : Fragment(), OnClickListener {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var auth: FirebaseAuth
 
-
     //Metodo que ACOPLA los elementos de la pantalla con el Fragment.
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
     }
-
 
     //METODO OBLIGATORIO. Retorna la vista que mostrara el fragment. Es decir su Layout. (fragment_login.xml)
     override fun onCreateView(
@@ -36,7 +34,6 @@ class LoginFragment : Fragment(), OnClickListener {
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     /*Aqui ya tenemos la vista creada y pegada al fragment.
@@ -46,6 +43,8 @@ class LoginFragment : Fragment(), OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         //Ocultar actionBar
         requireActivity().actionBar?.setDisplayShowTitleEnabled(false)
+        //Inicialiazar la isntancia de FIREBASE
+        auth = FirebaseAuth.getInstance()
         binding.btnEntrar.setOnClickListener(this)
         binding.btnRegistro.setOnClickListener(this)
     }
@@ -61,36 +60,38 @@ class LoginFragment : Fragment(), OnClickListener {
 
             binding.btnEntrar.id -> {
                 //Comprobamos que hay datos.
-                if (binding.editUser.text.isNotEmpty()
-                    && binding.editPassword.text.isNotEmpty()
+                if (binding.editCorreoLogin.text.isNotEmpty()
+                    && binding.editPasswordLogin.text.isNotEmpty()
                 ) {
-                    //Navegamos a otro fragment con la lista de ligas.
-//                    Snackbar.make(
-//                        binding.root,
-//                        resources.getString(R.string.datosOk),
-//                        Snackbar.LENGTH_SHORT
-//                    ).show()
-                    findNavController().navigate(R.id.action_loginFragment_to_LigaFragment)
-
+                    //LOGIN EN FIREBASE
+                    val correo = binding.editCorreoLogin.text.toString()
+                    val password = binding.editPasswordLogin.text.toString()
+                    val usuario: Usuario = Usuario(correo, password)
+                    auth.signInWithEmailAndPassword(usuario.correo, usuario.password)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                findNavController().navigate(R.id.action_loginFragment_to_LigaFragment)
+                            } else {
+                                Snackbar.make(
+                                    binding.root,
+                                    "Error en inicio de sesion ${task.exception?.message}",
+                                    Snackbar.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
                 } else {
                     Snackbar.make(
                         binding.root,
                         resources.getString(R.string.rellenarDatos),
                         Snackbar.LENGTH_SHORT
                     ).show()
-
                 }
             }
 
-            binding.btnRegistro.id->{
-
-                //Prueba de funcionamineto de pulsacion.
-               /* Snackbar.make(binding.root,"Boton registro pulsado", Snackbar.LENGTH_SHORT).show()*/
+            binding.btnRegistro.id -> {
                 findNavController().navigate(R.id.action_loginFragment_to_registroFragment)
             }
 
         }
     }
-
-
 }
