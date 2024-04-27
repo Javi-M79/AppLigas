@@ -3,6 +3,7 @@ package com.example.appligas.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -20,12 +21,11 @@ class EquipoAdapter(
 ) :
     RecyclerView.Adapter<EquipoAdapter.MyHolderEquipo>() {
 
-
     class MyHolderEquipo(private var item: View) : ViewHolder(item) {
 
         var nombreEquipo: TextView = item.findViewById(R.id.nombreEquipo)
         var escudo: ImageView = item.findViewById(R.id.imagenEquipo)
-
+        var botonFavorito: ImageButton = item.findViewById(R.id.botonAddFavorito)
     }
 
 
@@ -38,19 +38,18 @@ class EquipoAdapter(
         return MyHolderEquipo(vista)
     }
 
-
     override fun onBindViewHolder(holder: EquipoAdapter.MyHolderEquipo, position: Int) {
         var equipo = listaEquipos[position]
         holder.nombreEquipo.text = equipo.nombre
-
-
         Glide.with(holder.itemView.context)
             .load(equipo.escudo)
             .placeholder(R.drawable.soccerball)
             .into(holder.escudo)
+        /* holder.nombreEquipo.setOnClickListener {
+             listener.onEquipoSelected(equipo)
+         }*/
 
-
-        holder.nombreEquipo.setOnClickListener {
+        holder.botonFavorito.setOnClickListener {
             listener.onEquipoSelected(equipo)
         }
 

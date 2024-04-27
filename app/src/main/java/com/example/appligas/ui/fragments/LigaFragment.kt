@@ -28,13 +28,10 @@ class LigaFragment : Fragment(), LigaAdapter.onLigaListener {
     private lateinit var requestQueue: RequestQueue
     private lateinit var equipo: EquipoFragment
 
-
     //Metodo que ACOPLA los elementos de la pantalla con el Fragment.
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        requestQueue = Volley.newRequestQueue(context)
-
-    }
+        requestQueue = Volley.newRequestQueue(context)    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,23 +40,19 @@ class LigaFragment : Fragment(), LigaAdapter.onLigaListener {
     ): View? {
         binding = FragmentLigaBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     //En este metodo incluimos la logica de la UI (escucha de botones, etc)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //CALLBACK. INICIAMOS EL OBJETO. POR CONTEXTO LE PASAMOS THIS QUE CORRESPONDE AL OBJETO LISTENER DE LA INTERFACE
         ligaAdapter = LigaAdapter(listaLigas, this)
         binding.recyclerLigas.adapter = ligaAdapter
         //En este caso en vez de this se usa requiredContext ya que la View ya esta inflada a traves del Binding.root.
         binding.recyclerLigas.layoutManager = LinearLayoutManager(requireContext())
         mostrarLigas()
-
     }
 
-    //Metodo que DESACOPLA los elementos de la pantalla con el Fragment.
     override fun onDetach() {
         super.onDetach()
     }
@@ -67,7 +60,6 @@ class LigaFragment : Fragment(), LigaAdapter.onLigaListener {
     //Metodo que trae el nombre de la liga.
     fun mostrarLigas() {
         val url = "https://www.thesportsdb.com/api/v1/json/3/all_leagues.php"
-
         val request = JsonObjectRequest(Request.Method.GET, url, null,
             { response ->
                 val jsonArray = response.getJSONArray("leagues")

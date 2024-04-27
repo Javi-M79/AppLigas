@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.appligas.R
@@ -34,6 +35,7 @@ class RegistroFragment() : Fragment(), OnClickListener {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
         super.onViewCreated(view, savedInstanceState)
         /*Inicio de la instancia de Firebase*/
         auth = FirebaseAuth.getInstance()

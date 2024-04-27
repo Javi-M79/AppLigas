@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.appligas.R
 import com.example.appligas.databinding.FragmentLoginBinding
 import com.example.appligas.model.Usuario
+import com.example.appligas.ui.activities.MainActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
@@ -32,17 +34,18 @@ class LoginFragment : Fragment(), OnClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     /*Aqui ya tenemos la vista creada y pegada al fragment.
     dentro de este metodo ponemos a escuchar a los botones.
     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
         super.onViewCreated(view, savedInstanceState)
-        //Ocultar actionBar
-        requireActivity().actionBar?.setDisplayShowTitleEnabled(false)
         //Inicialiazar la isntancia de FIREBASE
         auth = FirebaseAuth.getInstance()
         binding.btnEntrar.setOnClickListener(this)
@@ -50,7 +53,6 @@ class LoginFragment : Fragment(), OnClickListener {
     }
 
 
-    //Metodo que DESACOPLA los elementos de la pantalla con el Fragment.
     override fun onDetach() {
         super.onDetach()
     }
