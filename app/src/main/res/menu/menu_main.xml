@@ -4,13 +4,15 @@
     tools:context="com.example.appligas.ui.activities.MainActivity">
     <item
         android:id="@+id/favoritos"
+        android:icon="@drawable/star"
         android:orderInCategory="100"
         android:title="Favoritos"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/logout"
+        android:icon="@drawable/checkout"
         android:orderInCategory="100"
         android:title="Cerrar sesion"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 
 </menu>

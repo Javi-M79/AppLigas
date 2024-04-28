@@ -14,16 +14,16 @@
         android:layout_height="match_parent"
         android:background="@color/componentes"
         android:orientation="horizontal">
-        <!--Meter la imagen en un cardView?-->
+
 
         <ImageView
-            android:id="@+id/imagenEquipo"
+            android:id="@+id/imagenFavorito"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:paddingHorizontal="2dp" />
 
         <TextView
-            android:id="@+id/nombreEquipo"
+            android:id="@+id/nombreFavorito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

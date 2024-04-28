@@ -44,8 +44,17 @@
         android:id="@+id/equipoFragment"
         android:name="com.example.appligas.ui.fragments.EquipoFragment"
         android:label="Equipos"
-        tools:layout="@layout/fragment_equipo" />
+        tools:layout="@layout/fragment_equipo" >
+        <action
+            android:id="@+id/action_equipoFragment_to_favoritosFragment"
+            app:destination="@id/favoritosFragment" />
+    </fragment>
     <argument
         android:name="Liga"
         app:argType="com.example.appligas.model.Liga" />
+    <fragment
+        android:id="@+id/favoritosFragment"
+        android:name="com.example.appligas.ui.fragments.FavoritosFragment"
+        android:label="Favoritos"
+        tools:layout="@layout/fragment_favoritos" />
 </navigation>

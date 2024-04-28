@@ -1,6 +1,5 @@
 package com.example.appligas.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,17 +9,18 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.appligas.R
-import com.example.appligas.model.Equipo
-import com.example.appligas.ui.fragments.FavoritosFragment
+import com.example.appligas.model.EquipoFavorito
 
 class FavoritosAdapter(
-    val listaFavoritos: ArrayList<Equipo>,
-    val listener: onFavoritosListener
+    val listaFavoritos: MutableList<EquipoFavorito>,
+    val listener: FavoritosAdapter.onFavoritosListener
 ) : RecyclerView.Adapter<FavoritosAdapter.MyHolderFavoritos>() {
 
+
     class MyHolderFavoritos(private var item: View) : ViewHolder(item) {
-        var nombreEquipo: TextView = item.findViewById(R.id.nombreEquipo)
-        var escudo: ImageView = item.findViewById(R.id.imagenEquipo)
+
+        var nombreFavorito: TextView = item.findViewById(R.id.nombreFavorito)
+        var imagenFavorito: ImageView = item.findViewById(R.id.imagenFavorito)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolderFavoritos {
@@ -34,18 +34,20 @@ class FavoritosAdapter(
     }
 
     override fun onBindViewHolder(holder: MyHolderFavoritos, position: Int) {
-        var equipo = listaFavoritos[position]
-        holder.nombreEquipo.text = equipo.nombre
+        var favorito = listaFavoritos[position]
+        holder.nombreFavorito.text = favorito.nombre
         Glide.with(holder.itemView.context)
-            .load(equipo.escudo)
+            .load(favorito.escudo)
             .placeholder(R.drawable.soccerball)
-            .into(holder.escudo)
+            .into(holder.imagenFavorito)
+        // Imprimir los datos para verificar si se están pasando correctamente
+        println("Nombre del favorito en posición $position: ${favorito.nombre}")
+        println("URL del escudo en posición $position: ${favorito.escudo}")
 
     }
 
-    interface onFavoritosListener{
-
-        class onFavoritoSelected()
+    interface onFavoritosListener {
+        fun onFavoritoSelected(favorito: EquipoFavorito)
 
     }
 

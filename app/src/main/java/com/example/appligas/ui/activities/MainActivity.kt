@@ -9,24 +9,24 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.appligas.R
-import com.example.appligas.adapter.FavoritosAdapter
 import com.example.appligas.databinding.ActivityMainBinding
 import com.example.appligas.model.Equipo
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var favoritosAdapter: FavoritosAdapter
+    private lateinit var database: FirebaseDatabase
     private lateinit var listaFavoritos: ArrayList<Equipo>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
+        listaFavoritos = ArrayList()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
@@ -55,20 +55,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.favoritos -> {
-                Snackbar.make(binding.root, "Boton favoritos pulsado", Snackbar.LENGTH_SHORT).show()
-//                val navController = findNavController(R.id.nav_host_fragment_content_main)
-//                navController.navigate(R.id.favoritos)
-//                favoritosAdapter = FavoritosAdapter(listaFavoritos, this)
-//
-//                //Le llevamos al recyclerView de Favoritos del usuario
-//
-//                //Identificamos al usuario que se encuantra logeado actualmente
-//                val currentUser = FirebaseAuth.getInstance().currentUser
-//                //Acceder al nodo de currentUser al nodo de favoritos de ese usuario
-
-
+                val navController = findNavController(R.id.nav_host_fragment_content_main)
+                navController.navigate(R.id.favoritosFragment)
                 true
+
             }
+
 
             else -> super.onOptionsItemSelected(item)
         }
@@ -81,6 +73,8 @@ class MainActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
 
     }
+
+
 
 
 }

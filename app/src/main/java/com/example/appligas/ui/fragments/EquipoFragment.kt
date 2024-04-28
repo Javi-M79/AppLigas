@@ -7,15 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.appligas.R
 import com.example.appligas.adapter.EquipoAdapter
-import com.example.appligas.controller.UserController
 import com.example.appligas.databinding.FragmentEquipoBinding
 import com.example.appligas.model.Equipo
+import com.example.appligas.model.EquipoFavorito
 import com.example.appligas.model.Liga
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -27,25 +29,35 @@ class EquipoFragment : Fragment(), EquipoAdapter.onEquipoListener {
     private lateinit var binding: FragmentEquipoBinding
     private lateinit var equipoAdapter: EquipoAdapter
     private lateinit var database: FirebaseDatabase
-    private lateinit var userController: UserController
-    private val listaEquipos: ArrayList<Equipo> = ArrayList()
+    private lateinit var listaEquipos: ArrayList<Equipo>
+    private lateinit var listaFavoritos: MutableList<EquipoFavorito>
     private lateinit var requestQueue: RequestQueue
     private lateinit var ligaRecuperada: Liga
     private lateinit var auth: FirebaseAuth
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         (requireActivity() as AppCompatActivity).supportActionBar?.show()
         super.onViewCreated(view, savedInstanceState)
+
+        //Inicio de las listas.
+        listaEquipos = ArrayList()
+        listaFavoritos = ArrayList()
+
         auth = FirebaseAuth.getInstance()
         //Posibilidad de llegar a la base de datos. Debemos poner la url en funcion de donde la alojemos. La copiamos de Firebase
         database = FirebaseDatabase.getInstance("https://appligaspmdm-default-rtdb.firebaseio.com/")
-        userController = UserController()
+
+
         equipoAdapter = EquipoAdapter(listaEquipos, this)
         binding.recyclerEquipos.adapter = equipoAdapter
         binding.recyclerEquipos.layoutManager = LinearLayoutManager(requireContext())
 //        Recuperacion de datos del fragment liga
         ligaRecuperada = arguments?.getSerializable("liga") as Liga
-        obtenerEquipos(ligaRecuperada.nombre)
+        ligaRecuperada?.let {
+            obtenerEquipos(ligaRecuperada.nombre)
+        }
+
     }
 
     override fun onAttach(context: Context) {
@@ -69,7 +81,6 @@ class EquipoFragment : Fragment(), EquipoAdapter.onEquipoListener {
 
 
     fun obtenerEquipos(nombreLiga: String) {
-
         val url = "https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=${nombreLiga}"
         val request = JsonObjectRequest(
             Request.Method.GET, url, null,
@@ -96,32 +107,18 @@ class EquipoFragment : Fragment(), EquipoAdapter.onEquipoListener {
 
     }
 
+
     override fun onEquipoSelected(equipo: Equipo) {
-        listaEquipos.add(equipo)
-        if (equipo != null) {
-            val bundle = Bundle()
-            bundle.putSerializable("Equipo", equipo)
-            Snackbar.make(
-                binding.root,
-                "Equipo añadido a favoritos con exito",
-                Snackbar.LENGTH_SHORT
-            ).show()
-
-        }else{
-            Snackbar.make(
-                binding.root,
-                "Error al añadir el equipo.",
-                Snackbar.LENGTH_SHORT
-            ).show()
-        }
+        val bundle = Bundle()
+        bundle.putSerializable("Favorito", equipo)
 
 
-
-        //TODO IMPLEMENTAR NODO EN FIREBASE FAVORITOS
     }
 
 
 }
+
+
 
 
 

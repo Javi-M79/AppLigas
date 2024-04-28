@@ -44,6 +44,7 @@ class LoginFragment : Fragment(), OnClickListener {
     dentro de este metodo ponemos a escuchar a los botones.
     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //Ocultar la barra de herramientas
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
         super.onViewCreated(view, savedInstanceState)
         //Inicialiazar la isntancia de FIREBASE

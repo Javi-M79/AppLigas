@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,13 +27,12 @@ class LigaFragment : Fragment(), LigaAdapter.onLigaListener {
     private lateinit var ligaAdapter: LigaAdapter
     private var listaLigas: ArrayList<Liga> = ArrayList()
     private lateinit var requestQueue: RequestQueue
-    private lateinit var equipo: EquipoFragment
 
-    //Metodo que ACOPLA los elementos de la pantalla con el Fragment.
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        requestQueue = Volley.newRequestQueue(context)    }
-
+        requestQueue = Volley.newRequestQueue(context)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,16 +42,17 @@ class LigaFragment : Fragment(), LigaAdapter.onLigaListener {
         return binding.root
     }
 
-    //En este metodo incluimos la logica de la UI (escucha de botones, etc)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        //Ocultar la barra de herramientas
+//        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
         ligaAdapter = LigaAdapter(listaLigas, this)
         binding.recyclerLigas.adapter = ligaAdapter
         //En este caso en vez de this se usa requiredContext ya que la View ya esta inflada a traves del Binding.root.
         binding.recyclerLigas.layoutManager = LinearLayoutManager(requireContext())
         mostrarLigas()
     }
+
 
     override fun onDetach() {
         super.onDetach()
@@ -80,7 +81,6 @@ class LigaFragment : Fragment(), LigaAdapter.onLigaListener {
                     .show()
 
             })
-        Volley.newRequestQueue(requireContext()).add(request)
         requestQueue.add(request)
     }
 

@@ -79,7 +79,8 @@ class RegistroFragment() : Fragment(), OnClickListener {
                                 //Creamos una referencia del usuario para llevarlo a DB
                                 database = FirebaseDatabase.getInstance()
                                 //Crear el usuario despues de crear la instancia de la DB.
-                                val usuario: Usuario = Usuario(nombreUsuario, mailUsuario, passwordUsuario)
+                                val usuario: Usuario =
+                                    Usuario(nombreUsuario, mailUsuario, passwordUsuario)
                                 val usuarioReferencia =
                                     database.getReference("usuarios").child(auth.currentUser!!.uid)
 //                                //Guardamos todos los datos del usuario creado
