@@ -10,9 +10,10 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.appligas.R
 import com.example.appligas.model.EquipoFavorito
+import com.google.android.material.snackbar.Snackbar
 
 class FavoritosAdapter(
-    val listaFavoritos: MutableList<EquipoFavorito>,
+    val listaFavoritos: ArrayList<EquipoFavorito>,
     val listener: FavoritosAdapter.onFavoritosListener
 ) : RecyclerView.Adapter<FavoritosAdapter.MyHolderFavoritos>() {
 
@@ -34,7 +35,7 @@ class FavoritosAdapter(
     }
 
     override fun onBindViewHolder(holder: MyHolderFavoritos, position: Int) {
-        var favorito = listaFavoritos[position]
+        var favorito: EquipoFavorito = listaFavoritos[position]
         holder.nombreFavorito.text = favorito.nombre
         Glide.with(holder.itemView.context)
             .load(favorito.escudo)
@@ -43,11 +44,15 @@ class FavoritosAdapter(
         // Imprimir los datos para verificar si se están pasando correctamente
         println("Nombre del favorito en posición $position: ${favorito.nombre}")
         println("URL del escudo en posición $position: ${favorito.escudo}")
+        holder.nombreFavorito.setOnClickListener{
+            Snackbar.make(holder.itemView, "nombre pulsado", Snackbar.LENGTH_SHORT).show()
+        }
 
     }
 
     interface onFavoritosListener {
         fun onFavoritoSelected(favorito: EquipoFavorito)
+
 
     }
 
