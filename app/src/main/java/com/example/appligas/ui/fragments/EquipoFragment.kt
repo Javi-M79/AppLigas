@@ -109,8 +109,7 @@ class EquipoFragment : Fragment(), EquipoAdapter.onEquipoListener {
 
 
     override fun onEquipoSelected(equipo: Equipo) {
-        val bundle = Bundle()
-        bundle.putSerializable("Favorito", equipo)
+
 
 
     }
